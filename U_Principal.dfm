@@ -16,14 +16,6 @@ object frm_Principal: Tfrm_Principal
   WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
-  object CONGERAL: TFDConnection
-    ConnectionName = 'C:\SQLLite3\sqlitestudio-3.3.3\SQLiteStudio\TesteFortes'
-    Params.Strings = (
-      'DriverID=SQLite')
-    Connected = True
-    Left = 224
-    Top = 64
-  end
   object mmPrincipal: TMainMenu
     Left = 32
     Top = 24

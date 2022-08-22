@@ -16,7 +16,6 @@ type
     dsAbastecimento: TDataSource;
     RLBand1: TRLBand;
     RLBand2: TRLBand;
-    RLBand3: TRLBand;
     RLBand4: TRLBand;
     rlblTitulo: TRLLabel;
     rlsystmnf1: TRLSystemInfo;
@@ -27,14 +26,19 @@ type
     rlblPercentual: TRLLabel;
     rlblBOmba: TRLLabel;
     rlblVlAbastecimento1: TRLLabel;
-    rldbtxtCodigo: TRLDBText;
-    rldbtxtData: TRLDBText;
-    rldbVL_LITROS: TRLDBText;
-    rldbtxtVL_PERCENTUAL_IMPOSTO: TRLDBText;
-    rldbtxtBomba: TRLDBText;
-    rldbtxtVL_Abastecimento: TRLDBText;
     rlsystmnf3: TRLSystemInfo;
     RLSystemInfo1: TRLSystemInfo;
+    rlgrp1: TRLGroup;
+    TRLBand: TRLBand;
+    rldbtxtCodigo: TRLDBText;
+    rldbtxtCodigoDT_ABASTECIMENTO: TRLDBText;
+    rldbtxtCodigoVL_LITROS: TRLDBText;
+    rldbtxtCodigoVL_PERCENTUAL_IMPOSTO: TRLDBText;
+    rldbtxtCodigoDS_BOMBA: TRLDBText;
+    rldbtxtCodigoVL_ABASTECIMENTO: TRLDBText;
+    TRLBand5: TRLBand;
+    rlblValorGeral: TRLLabel;
+    rldbrsltTotal_Abastecimentos: TRLDBResult;
     procedure rlrprtAbastecimentosBeforePrint(Sender: TObject; var PrintIt:
         Boolean);
   private

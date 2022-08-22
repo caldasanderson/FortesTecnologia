@@ -131,81 +131,9 @@ object FrmRelatorioAbastecimento: TFrmRelatorioAbastecimento
         Caption = 'Valor do Abastecimento'
       end
     end
-    object RLBand3: TRLBand
-      Left = 38
-      Top = 89
-      Width = 718
-      Height = 24
-      object rldbtxtCodigo: TRLDBText
-        Left = 29
-        Top = 0
-        Width = 44
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'CD_ABASTECIMENTO'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-      object rldbtxtData: TRLDBText
-        Left = 79
-        Top = 0
-        Width = 74
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'DT_ABASTECIMENTO'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-      object rldbVL_LITROS: TRLDBText
-        Left = 159
-        Top = 0
-        Width = 74
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'VL_LITROS'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-      object rldbtxtVL_PERCENTUAL_IMPOSTO: TRLDBText
-        Left = 261
-        Top = 0
-        Width = 74
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'VL_PERCENTUAL_IMPOSTO'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-      object rldbtxtBomba: TRLDBText
-        Left = 432
-        Top = 0
-        Width = 113
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'DS_BOMBA'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-      object rldbtxtVL_Abastecimento: TRLDBText
-        Left = 594
-        Top = 0
-        Width = 121
-        Height = 16
-        Align = faTopOnly
-        AutoSize = False
-        DataField = 'VL_ABASTECIMENTO'
-        DataSource = dsAbastecimento
-        Text = ''
-      end
-    end
     object RLBand4: TRLBand
       Left = 38
-      Top = 113
+      Top = 145
       Width = 718
       Height = 24
       BandType = btFooter
@@ -227,6 +155,110 @@ object FrmRelatorioAbastecimento: TFrmRelatorioAbastecimento
         Text = 'Data:'
       end
     end
+    object rlgrp1: TRLGroup
+      Left = 38
+      Top = 89
+      Width = 718
+      Height = 56
+      object TRLBand: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 24
+        object rldbtxtCodigo: TRLDBText
+          Left = 29
+          Top = 0
+          Width = 44
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'CD_ABASTECIMENTO'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+        object rldbtxtCodigoDT_ABASTECIMENTO: TRLDBText
+          Left = 79
+          Top = 0
+          Width = 74
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'DT_ABASTECIMENTO'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+        object rldbtxtCodigoVL_LITROS: TRLDBText
+          Left = 159
+          Top = 0
+          Width = 74
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'VL_LITROS'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+        object rldbtxtCodigoVL_PERCENTUAL_IMPOSTO: TRLDBText
+          Left = 261
+          Top = 0
+          Width = 74
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'VL_PERCENTUAL_IMPOSTO'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+        object rldbtxtCodigoDS_BOMBA: TRLDBText
+          Left = 432
+          Top = 0
+          Width = 113
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'DS_BOMBA'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+        object rldbtxtCodigoVL_ABASTECIMENTO: TRLDBText
+          Left = 594
+          Top = 0
+          Width = 121
+          Height = 16
+          Align = faTopOnly
+          AutoSize = False
+          DataField = 'VL_ABASTECIMENTO'
+          DataSource = dsAbastecimento
+          Text = ''
+        end
+      end
+      object TRLBand5: TRLBand
+        Left = 0
+        Top = 24
+        Width = 718
+        Height = 25
+        BandType = btFooter
+        object rlblValorGeral: TRLLabel
+          Left = 448
+          Top = 0
+          Width = 134
+          Height = 16
+          Align = faTopOnly
+          Caption = 'Total Abastecimentos:'
+        end
+        object rldbrsltTotal_Abastecimentos: TRLDBResult
+          Left = 632
+          Top = 0
+          Width = 176
+          Height = 16
+          Align = faTopOnly
+          DataField = 'VL_ABASTECIMENTO'
+          DataSource = dsAbastecimento
+          Info = riSum
+          Text = ''
+        end
+      end
+    end
   end
   object qryAbastecimento: TFDQuery
     Connection = DM_Principal.CONGERAL
@@ -237,7 +269,8 @@ object FrmRelatorioAbastecimento: TFrmRelatorioAbastecimento
         'ecimento, a.vl_percentual_imposto, b.ds_bomba'
       'from'
       '    tb_abastecimento a'
-      '    inner join tb_bomba b on a.cd_bomba = b.cd_bomba')
+      '    inner join tb_bomba b on a.cd_bomba = b.cd_bomba'
+      'order by a.dt_abastecimento')
     Left = 576
     Top = 16
   end

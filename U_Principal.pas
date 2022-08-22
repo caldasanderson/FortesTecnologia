@@ -12,7 +12,6 @@ uses
 
 type
   Tfrm_Principal = class(TForm)
-    CONGERAL: TFDConnection;
     mmPrincipal: TMainMenu;
     mniCadastrar: TMenuItem;
     mniRelatorios: TMenuItem;

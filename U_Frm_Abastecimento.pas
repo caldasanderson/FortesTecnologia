@@ -16,19 +16,21 @@ type
     lblCdAbastecimento: TLabel;
     edtCdAbastecimento: TEdit;
     lblVlPercentualImposto: TLabel;
-    medtVlPercentualImposto: TMaskEdit;
     dtpDtAbastecimento: TDateTimePicker;
     lblDtAbastecimento: TLabel;
     lblVlLitros: TLabel;
-    medtVlLitros: TMaskEdit;
     lblVlAbastecimento: TLabel;
-    medtVlAbastecimento: TMaskEdit;
     lblBomba: TLabel;
     btnSalvar: TSpeedButton;
     qryAbastecimentoBomba: TFDQuery;
     dsBomba: TDataSource;
     dblkcbbcdBomba: TDBLookupComboBox;
+    edtLitros: TEdit;
+    edtVL_Abastecimento: TEdit;
+    edtVl_Imposto: TEdit;
     procedure btnSalvarClick(Sender: TObject);
+    procedure edtLitrosExit(Sender: TObject);
+    procedure edtLitrosKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -59,9 +61,9 @@ begin
     begin
       Abastecimento.dt_Abastecimento := dtpDtAbastecimento.Date;
       Abastecimento.C_Bomba.cd_Bomba := dblkcbbcdBomba.ListSource.DataSet.FieldByName('cd_bomba').AsInteger;
-      Abastecimento.vl_Litros :=  StrToFloat(medtVlLitros.Text);
-      Abastecimento.vl_Abastecimento := StrToFloat(medtVlAbastecimento.Text);
-      Abastecimento.vl_Percentual_Imposto := StrToFloat(medtVlPercentualImposto.Text);
+      Abastecimento.vl_Litros :=   StrToFloat(edtLitros.Text);
+      Abastecimento.vl_Abastecimento := StrToFloat(edtVL_Abastecimento.Text);
+      Abastecimento.vl_Percentual_Imposto := StrToFloat(edtVl_Imposto.Text);
 
       if Abastecimento.Salvar('I') then
       begin
@@ -80,24 +82,24 @@ end;
 function Tfrm_Abastecimento.Campos_Obrigatorios: Boolean;
 begin
   Result := True;
-  if medtVlLitros.Text = EmptyStr then
+  if ((edtLitros.Text = EmptyStr) or (edtLitros.Text = '0,00')) then
   begin
     ShowMessage('Favor preencher a quantidade de litros do abastecimento');
-    medtVlLitros.SetFocus;
+    edtLitros.SetFocus;
     Result := False;
     Exit;
   end;
-  if medtVlAbastecimento.Text = EmptyStr then
+  if ((edtVL_Abastecimento.Text = EmptyStr) or (edtVL_Abastecimento.Text = '0,00'))  then
   begin
     ShowMessage('Favor preencher o valor do abastecimento');
-    medtVlAbastecimento.SetFocus;
+    edtVL_Abastecimento.SetFocus;
     Result := False;
     Exit;
   end;
-  if medtVlAbastecimento.Text = EmptyStr then
+  if ((edtVl_Imposto.Text = EmptyStr) or (edtVl_Imposto.Text = '0,00')) then
   begin
     ShowMessage('Favor preencher a quantidade de litros do abastecimento');
-    medtVlAbastecimento.SetFocus;
+    edtVl_Imposto.SetFocus;
     Result := False;
     Exit;
   end;
@@ -109,7 +111,31 @@ begin
     Exit;
   end;
 
+end;
 
+procedure Tfrm_Abastecimento.edtLitrosExit(Sender: TObject);
+var
+   TextoEdit: UnicodeString;
+   Valor: Currency;
+begin
+   TextoEdit := TCustomEdit(Sender).Text;
+
+  if TryStrToCurr(TextoEdit, Valor) then
+    TCustomEdit(Sender).Text := FormatFloat('#.##', Valor)
+  else
+  begin
+    ShowMessage('Valor inválido!');
+    TCustomEdit(Sender).Text := '0,00';
+    TCustomEdit(Sender).SetFocus;
+  end;
+end;
+
+procedure Tfrm_Abastecimento.edtLitrosKeyPress(Sender: TObject; var Key: Char);
+begin
+ if not (Key in ['0'..'9', ',', #8]) then
+ begin
+   Key := #0;
+ end;
 end;
 
 end.

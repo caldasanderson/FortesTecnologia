@@ -33,7 +33,7 @@ object frm_Abastecimento: Tfrm_Abastecimento
     object lblVlPercentualImposto: TLabel
       Left = 432
       Top = 65
-      Width = 119
+      Width = 107
       Height = 13
       Caption = 'Percentual Imposto %'
     end
@@ -117,15 +117,6 @@ object frm_Abastecimento: Tfrm_Abastecimento
       Enabled = False
       TabOrder = 0
     end
-    object medtVlPercentualImposto: TMaskEdit
-      Left = 430
-      Top = 81
-      Width = 121
-      Height = 21
-      Enabled = False
-      TabOrder = 4
-      Text = '13,00'
-    end
     object dtpDtAbastecimento: TDateTimePicker
       Left = 160
       Top = 38
@@ -135,22 +126,6 @@ object frm_Abastecimento: Tfrm_Abastecimento
       Time = 0.662036782407085400
       TabOrder = 1
     end
-    object medtVlLitros: TMaskEdit
-      Left = 16
-      Top = 80
-      Width = 118
-      Height = 21
-      TabOrder = 2
-      Text = ''
-    end
-    object medtVlAbastecimento: TMaskEdit
-      Left = 160
-      Top = 81
-      Width = 116
-      Height = 21
-      TabOrder = 3
-      Text = ''
-    end
     object dblkcbbcdBomba: TDBLookupComboBox
       Left = 286
       Top = 81
@@ -159,7 +134,36 @@ object frm_Abastecimento: Tfrm_Abastecimento
       KeyField = 'CD_BOMBA'
       ListField = 'DS_BOMBA'
       ListSource = dsBomba
+      TabOrder = 4
+    end
+    object edtLitros: TEdit
+      Left = 17
+      Top = 80
+      Width = 121
+      Height = 21
+      TabOrder = 2
+      OnExit = edtLitrosExit
+      OnKeyPress = edtLitrosKeyPress
+    end
+    object edtVL_Abastecimento: TEdit
+      Left = 159
+      Top = 81
+      Width = 121
+      Height = 21
+      TabOrder = 3
+      OnExit = edtLitrosExit
+      OnKeyPress = edtLitrosKeyPress
+    end
+    object edtVl_Imposto: TEdit
+      Left = 429
+      Top = 81
+      Width = 121
+      Height = 21
+      Enabled = False
       TabOrder = 5
+      Text = '13,00'
+      OnExit = edtLitrosExit
+      OnKeyPress = edtLitrosKeyPress
     end
   end
   object qryAbastecimentoBomba: TFDQuery

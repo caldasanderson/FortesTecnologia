@@ -15,7 +15,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tfrm_Principal, frm_Principal);
   Application.CreateForm(TDM_Principal, DM_Principal);
-  Application.CreateForm(Tfrm_Abastecimento, frm_Abastecimento);
-  Application.CreateForm(TFrmRelatorioAbastecimento, FrmRelatorioAbastecimento);
   Application.Run;
 end.
